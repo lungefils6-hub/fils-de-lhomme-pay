@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827"><title>Fils de l’Homme Pay</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><span class="brandmark">FH</span><div><b>Fils de l’Homme</b><small>PAY • CRÉATEURS</small></div></div>
+  <nav>
+    <button class="nav active" data-page="dashboard">◫ Tableau de bord</button>
+    <button class="nav" data-page="social">◎ Réseaux sociaux</button>
+    <button class="nav" data-page="rewards">◈ Récompenses</button>
+    <button class="nav" data-page="withdrawals">↗ Retraits</button>
+    <button class="nav" data-page="settings">⚙ Paramètres</button>
+  </nav>
+  <div class="sidebarbottom"><span class="dot"></span> Prototype sécurisé en préparation</div>
+</aside>
+<main class="main">
+  <header class="topbar"><div><span class="eyebrow">ESPACE CRÉATEUR</span><h1 id="pageTitle">Tableau de bord</h1></div><div class="userpill"><span class="avatar">FH</span><span id="userLabel">Visiteur</span></div></header>
+  <div class="banner"><b>Bienvenue sur Fils de l’Homme Pay</b><span>Connecte tes comptes officiels et suis tes demandes de retrait. Les récompenses réelles ne seront activées qu’après validation des réseaux, du financement et du prestataire de paiement.</span></div>
+
+  <section class="page active" id="dashboard">
+    <div class="grid stats">
+      <article class="panel stat"><span>Solde disponible</span><strong id="balance">$0.00</strong><small>USD • Aucun dépôt</small></article>
+      <article class="panel stat"><span>Réseaux connectés</span><strong id="socialCount">0</strong><small>Facebook et TikTok</small></article>
+      <article class="panel stat"><span>Demandes de retrait</span><strong id="payoutCount">0</strong><small>Historique de ton compte</small></article>
+    </div>
+    <div class="grid two">
+      <article class="panel"><div class="panelhead"><h2>Connecter un compte</h2><span class="pill">Étape 1</span></div><p>Autorise les connexions officielles. Le site ne te demandera jamais ton mot de passe Facebook ou TikTok directement.</p><div class="socialbuttons"><a class="social fb" href="/auth/facebook">f&nbsp; Continuer avec Facebook</a><a class="social tt" href="/auth/tiktok">♪&nbsp; Continuer avec TikTok</a></div></article>
+      <article class="panel"><div class="panelhead"><h2>Retrait uniquement</h2><span class="pill green">Sans dépôt</span></div><p>Choisis un moyen de retrait compatible, saisis le montant et consulte le statut de ta demande.</p><button class="primary" data-goto="withdrawals">Ouvrir les retraits</button></article>
+    </div>
+    <article class="panel"><div class="panelhead"><h2>Activité récente</h2><span class="muted">Ton compte</span></div><div id="recent" class="empty">Connecte-toi pour consulter ton activité. Les données réelles ne seront affichées qu’après autorisation des plateformes.</div></article>
+  </section>
+
+  <section class="page" id="social">
+    <article class="panel"><div class="panelhead"><h2>Comptes sociaux</h2><span class="pill">Connexion officielle</span></div><p>Connecte tes comptes en passant par les pages officielles de Facebook et TikTok. Les données disponibles dépendent des autorisations approuvées par chaque plateforme.</p><div class="grid two"><div class="socialcard"><div class="socialicon fbicon">f</div><h3>Facebook</h3><p>Connexion OAuth officielle à configurer avec Meta for Developers.</p><a class="social fb" href="/auth/facebook">Connecter Facebook</a></div><div class="socialcard"><div class="socialicon tticon">♪</div><h3>TikTok</h3><p>Login Kit et permissions à faire approuver dans TikTok for Developers.</p><a class="social tt" href="/auth/tiktok">Connecter TikTok</a></div></div><div class="notice">Les boutons sont préparés, mais les identifiants développeur et l’approbation des applications sont nécessaires pour les connexions réelles.</div></article>
+  </section>
+
+  <section class="page" id="rewards">
+    <article class="panel"><div class="panelhead"><h2>Récompenses et statistiques</h2><span class="pill">Transparence</span></div><p>Les vues ne deviennent pas automatiquement de l’argent. Une récompense ne peut être créditée que si une règle vérifiable est définie, les données sont autorisées et le financement existe.</p><div class="grid two"><div class="infobox"><b>Statistiques</b><p>Les données seront demandées aux API officielles, selon les accès réellement accordés.</p></div><div class="infobox"><b>Calcul des récompenses</b><p>La formule, les plafonds, les contrôles anti-fraude et la source de financement devront être configurés avant lancement.</p></div></div><div class="notice">Aucun solde fictif ne sera présenté comme de l’argent réel. Cette version n’ajoute pas automatiquement de fonds.</div></article>
+  </section>
+
+  <section class="page" id="withdrawals">
+    <div class="grid two">
+      <article class="panel"><div class="panelhead"><h2>Demander un retrait</h2><span class="pill green">Aucun dépôt</span></div>
+        <form id="payoutForm">
+          <label for="method">Moyen de retrait</label><select id="method" required><option value="Airtel Money">Airtel Money</option><option value="Orange Money">Orange Money</option><option value="M-Pesa">M-Pesa</option><option value="Autre Mobile Money">Autre Mobile Money</option></select>
+          <label for="phone">Numéro de réception</label><input id="phone" type="tel" placeholder="+243…" autocomplete="tel" required>
+          <label for="amount">Montant à retirer (USD)</label><input id="amount" type="number" min="1" max="1000" step="1" placeholder="Ex. 5" required>
+          <button class="primary" type="submit">Envoyer la demande</button><p id="payoutMessage" class="formmessage" aria-live="polite"></p>
+          <small>La demande sera enregistrée pour vérification. Aucun transfert réel n’aura lieu tant qu’un prestataire n’est pas connecté et que le solde n’est pas financé.</small>
+        </form>
+      </article>
+      <article class="panel"><div class="panelhead"><h2>Historique des retraits</h2><span class="muted">Statut des demandes</span></div><div id="payoutHistory" class="empty">Aucune demande enregistrée.</div></article>
+    </div>
+  </section>
+
+  <section class="page" id="settings">
+    <article class="panel"><div class="panelhead"><h2>Profil et confidentialité</h2><span class="pill">Sécurité</span></div>
+      <form id="demoLogin"><label for="email">Adresse e-mail</label><input id="email" type="email" placeholder="toi@exemple.com" autocomplete="email" required><button class="primary" type="submit">Ouvrir une session de test</button><p class="formmessage" id="loginMessage"></p><small>La session de test sert uniquement à vérifier l’interface en développement. Elle n’est pas une authentification de production.</small></form>
+      <div class="divider"></div><h3>Confidentialité et sécurité</h3><ul class="privacy"><li>Ne partage jamais ton mot de passe ou tes codes de vérification.</li><li>Les connexions sociales doivent passer par les pages officielles des plateformes.</li><li>Les jetons secrets doivent rester sur le serveur.</li><li>Les données personnelles ne doivent être conservées que si elles sont nécessaires.</li><li>Les demandes de retrait doivent être vérifiées avant tout paiement.</li></ul>
+      <button class="secondary" id="logoutBtn">Fermer la session</button>
+    </article>
+  </section>
+  <footer>Fils de l’Homme Pay · RDC · Plateforme en préparation</footer>
+</main>
+<script src="/app.js"></script>
+</body></html>
